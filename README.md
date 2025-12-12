@@ -1,5 +1,3 @@
-**INFO:** This project is no longer maintained. Feel free to clone it and take care about it.
-
 Ada 2022 Standard Docset
 =======================
 
@@ -8,7 +6,7 @@ Author: Bartek Jasicki (https://github.com/thindil)
 Prerequisites: Python, Sqlite3
 
 1. Take all needed files from the Git repository:
-   https://github.com/thindil/ada-docset
+   https://github.com/sbenitezb/ada-docset
 2. Run the generating script: `./adadocset.py` or, if you have installed
    [Bob](https://github.com/thindil/bob): `bob build` for generate docset
    and `bob compress` to compress it.
