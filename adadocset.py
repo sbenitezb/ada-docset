@@ -19,7 +19,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Build Ada 2012 specification docset from the HTML version of it."""
+"""Build Ada 2022 specification docset from the HTML version of it."""
 
 import os.path
 import re
@@ -29,14 +29,14 @@ import urllib.request
 import zipfile
 
 # Check if archive with Ada specification exists. If not, download it.
-if not os.path.exists("RM-12_w_TC1-Html.zip"):
+if not os.path.exists("RM-22-Html.zip"):
     print("Downloading Ada specification, please wait...")
-    urllib.request.urlretrieve("http://www.ada-auth.org/standards/rm12_w_tc1/RM-12_w_TC1-Html.zip",
-                               "RM-12_w_TC1-Html.zip")
+    urllib.request.urlretrieve("http://www.ada-auth.org/standards/22rm/RM-22-Html.zip",
+                               "RM-22-Html.zip")
     print("Downloaded.")
 
 # Extract Ada specification to the proper directory
-with zipfile.ZipFile("RM-12_w_TC1-Html.zip", "r") as zip_ref:
+with zipfile.ZipFile("RM-22-Html.zip", "r") as zip_ref:
     print("Extracting Ada specification...")
     zip_ref.extractall("Ada.docset/Contents/Resources/Documents")
     print("Extracted.")
@@ -132,8 +132,13 @@ for j, filename in enumerate(FILENAMES):
             line = line[30:]
             result = re.search("[A-Z]+.+</", line)
             name = line[result.span()[0] : result.span()[1] - 2]
-            while content[i].find("See <A HREF=") == -1:
+            while i < len(content) and content[i].find("See <A HREF=") == -1:
                 i += 1
+
+            if i >= len(content):
+                # Skip malformed/incomplete entries
+                i += 1
+                continue
             line = content[i].strip()
             line = line[line.find("See <A HREF=") + 13:]
             path = line[:line.find("\"")]
