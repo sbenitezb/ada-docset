@@ -1,7 +1,7 @@
 Ada 2022 Standard Docset
 =======================
 
-## 🚨 MOVED TO [Codeberg](https://sbenitezb.github.io/ada-docset/)
+## 🚨 MOVED TO [Codeberg](https://codeberg.org/sbenitezb/ada-docset)
 
 Author: Bartek Jasicki (https://github.com/thindil)
 
