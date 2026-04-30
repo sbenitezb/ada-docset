@@ -1,6 +1,8 @@
 Ada 2022 Standard Docset
 =======================
 
+## 🚨 MOVED TO [Codeberg](https://sbenitezb.github.io/ada-docset/)
+
 Author: Bartek Jasicki (https://github.com/thindil)
 
 Prerequisites: Python, Sqlite3
